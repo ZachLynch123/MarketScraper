@@ -1,3 +1,22 @@
+const got = require('got');
+const cheerio = require('cheerio');
+
+const amcUrl = "https://finance.yahoo.com/quote/AMC/";
+
+
+got(amcUrl)
+.then(res => {
+    const $ = cheerio.load(res.body);
+    const heading = $('#mrt-node-Lead-4-QuoteHeader').find('h1');
+    const price = $("div[data-reactid='48']")
+    console.log(price.html());
+})
+
+
+
+
+
+
 
 
 
