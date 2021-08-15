@@ -1,15 +1,19 @@
 const got = require('got');
 const cheerio = require('cheerio');
 
-const amcUrl = "https://finance.yahoo.com/quote/AMC/";
+const amcUrl = "https://www.google.com/finance/quote/AMC:NYSE";
 
 
 got(amcUrl)
 .then(res => {
     const $ = cheerio.load(res.body);
-    const heading = $('#mrt-node-Lead-4-QuoteHeader').find('h1');
-    const price = $("div[data-reactid='48']")
-    console.log(price.html());
+    const heading = $('.kHAtIb')
+    const price = $(".YMlKec.fxKbKc");
+    const stats = $(".uptEI").each((i,element) => {
+        const textSide = $(element).children('div').children('span').find($('div')).html()
+        console.log(textSide);
+    });
+
 })
 
 
